@@ -4,19 +4,19 @@ const studentSchema = mongoose.Schema(
    {
       first_name: {
          type: String,
-         required: [true, 'First name 404']
+         default: 'fName'
       },
       last_name: {
          type: String,
-         required: [true, 'Last name 404']
+         default: 'fName'
       },
       email: {
          type: String,
-         required: [true, 'Email 404']
+         default: 'dummy@email.com'
       },
       phone: {
          type: Number,
-         required: [true, 'Phone 404']
+         default: 1234567890
       },
       bookmarked: {
          type: [String],
@@ -24,14 +24,11 @@ const studentSchema = mongoose.Schema(
       },
       district: {
          type: String,
-         required: [true, 'District 404']
+         default: ""
       },
       course: {
-         type: [{
-            type: Schema.Types.ObjectId,
-            ref: 'Course'
-         }],
-         required: [true, 'Course 404']
+         type: [String],
+         default: []
       },
       mentor: {
          type: {
@@ -41,16 +38,36 @@ const studentSchema = mongoose.Schema(
          // required: [true, 'mentor 404']
       },
       field: {
-         type: String,
-         required: [true, 'field 404']
+         type: [String],
+         default: []
       },
       performance: {
          type: Number,
-         required: [true, 'performance 404']
+         default: 0
       },
       enrolled: {
          type: Boolean,
          default: false
+      },
+      aadharnumber: {
+         type: Number,
+         default: 1234567890
+      },
+      aadaharcard: {
+         type: String,
+         default: 'dummy'
+      },
+      address: {
+         type: String,
+         default: 'home, student - 111222.'
+      },
+      pancard: {
+         type: String,
+         default: 'dummy'
+      },
+      password: {
+         type: String,
+         default: 'password'
       }
    },
    {
