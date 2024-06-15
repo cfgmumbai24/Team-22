@@ -1,14 +1,18 @@
-import mongoose from "mongoose";
+import mongoose, { Schema } from "mongoose";
 
 const mentorSchema = mongoose.Schema(
    {
       badges: {
          type: {
-            badgeType: {
-               type: String,
-               enum: ['gold', 'silver', 'bronze'],
+            gold: {
+               type: Number,
+               default: 0
             },
-            badgeCount: {
+            silver: {
+               type: Number,
+               default: 0
+            },
+            bronze: {
                type: Number,
                default: 0
             }
@@ -26,5 +30,4 @@ const mentorSchema = mongoose.Schema(
 );
 
 const Mentor = mongoose.model('mentor', mentorSchema);
-
 export default Mentor;

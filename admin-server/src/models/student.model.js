@@ -18,7 +18,7 @@ const studentSchema = mongoose.Schema(
             type: Schema.Types.ObjectId,
             ref: 'Mentor'
          },
-         required: [true, 'mentor 404']
+         // required: [true, 'mentor 404']
       },
       field: {
          type: String,
