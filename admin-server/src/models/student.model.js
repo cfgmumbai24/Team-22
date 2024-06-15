@@ -2,6 +2,26 @@ import mongoose, { Schema } from "mongoose";
 
 const studentSchema = mongoose.Schema(
    {
+      first_name: {
+         type: String,
+         required: [true, 'First name 404']
+      },
+      last_name: {
+         type: String,
+         required: [true, 'Last name 404']
+      },
+      email: {
+         type: String,
+         required: [true, 'Email 404']
+      },
+      phone: {
+         type: Number,
+         required: [true, 'Phone 404']
+      },
+      bookmarked: {
+         type: [String],
+         default: [],
+      },
       district: {
          type: String,
          required: [true, 'District 404']

@@ -21,7 +21,7 @@ server.use(express.urlencoded({ extended: false }));
 
 
 // Routes
-server.use('/admin/', router);
+server.use('/admin', router);
 
 
 // Database connection

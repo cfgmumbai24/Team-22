@@ -19,6 +19,7 @@ const getMentorDetails = async (req, res) => {
          },
          { $sort: { badgeValue: -1 } } // Sort by badgeValue in descending order
       ]);
+      console.log(mentors);
       return res.status(200).json({
          mentors
       });

@@ -4,8 +4,8 @@ import getMentorDetails from "../controllers/getMentorDetails.js";
 
 const router = express.Router();
 
-router.get('/', getDetails);
-router.get('/mentors/', getMentorDetails)
+router.get('/home', getDetails);
+router.get('/mentors', getMentorDetails)
 
 
 export default router;
