@@ -1,2 +1,16 @@
-import mongoose from "mongoose";
+import express from "express";
+import getDetails from '../controllers/getDetails.js';
 
+const router = express.Router();
+
+
+
+
+
+
+
+
+router.get('/', getDetails);
+
+
+export default router;

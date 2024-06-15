@@ -21,7 +21,7 @@ const studentSchema = mongoose.Schema(
          required: [true, 'mentor 404']
       },
       field: {
-         type: Strung,
+         type: String,
          required: [true, 'field 404']
       },
       performance: {
