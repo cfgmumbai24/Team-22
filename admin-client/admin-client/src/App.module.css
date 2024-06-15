@@ -1,0 +1,68 @@
+/* App.module.css */
+
+.appContainer {
+    text-align: center;
+  }
+  
+  .sliderContainer {
+    max-width: 800px; /* Adjust container width as needed */
+    margin: 0 auto; /* Center align container */
+    margin-top: 20px;
+  }
+  
+  .card {
+    background-color: #FFFBEA;
+    height: 450px;
+    color: #57321A;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  .imageContainer {
+    height: 56px;
+    background-color: #E9C874;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 20px 20px 0 0;
+  }
+  
+  .image {
+    height: 44px;
+    width: 44px;
+    border-radius: 50%;
+  }
+  
+  .contentContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    padding: 10px;
+  }
+  
+  .name {
+    font-size: 20px;
+    font-weight: bold;
+  }
+  
+  .review {
+    text-align: center;
+  }
+  
+  .button {
+    background-color: #E9C874;
+    color: #ffffff;
+    font-size: 16px;
+    padding: 8px 16px;
+    border-radius: 20px;
+    cursor: pointer;
+    border: none;
+  }
+  
+  .button:hover {
+    background-color: #E9C874;
+  }
+  

@@ -1,0 +1,35 @@
+.feedbacksContainer {
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .cardsWrapper {
+    display: flex;
+    transition: transform 0.5s ease; /* Smooth transition for sliding effect */
+  }
+  
+  .card {
+    flex: 0 0 calc(100% / 3); /* Adjust card width based on number of cards per row */
+    margin: 0 5px; /* Adjust margin as needed */
+  }
+  
+  .arrowBtn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+    z-index: 10;
+  }
+  
+  .left {
+    left: 0;
+  }
+  
+  .right {
+    right: 0;
+  }
+  

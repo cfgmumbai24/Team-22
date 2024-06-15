@@ -1,0 +1,19 @@
+/* styles.module.css */
+
+.feedbacks-container {
+    padding: 20px;
+  }
+  
+  .cards-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: space-between; /* Ensure cards are evenly spaced */
+  }
+  
+  @media (max-width: 768px) {
+    .cards-row {
+      flex-direction: column; /* Stack cards vertically on smaller screens */
+    }
+  }
+  
