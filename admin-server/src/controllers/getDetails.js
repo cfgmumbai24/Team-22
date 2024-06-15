@@ -8,30 +8,24 @@ const getDetails = async (req, res) => {
       ]);
 
 
-      const studentCountsByCourses = await Student.aggregate([
-         // Lookup course details for each student's course reference
+      const courses = await Student.aggregate([
          {
-            $lookup: {
-               from: 'Course', // Foreign collection name (Course)
-               localField: 'course', // Local field referencing course object id
-               foreignField: '_id', // Foreign field (Course model's _id)
-               as: 'courseDetails', // Alias for the joined course data
-            },
+            $unwind: "$course" // Deconstruct the course array into separate documents
          },
-         // Unwind the courseDetails array (one course per student)
-         { $unwind: "$courseDetails" },
-         // Group by course name and count students
          {
             $group: {
-               _id: "$courseDetails.name", // Group by course name
-               count: { $sum: 1 }, // Count the number of students in each group
-            },
+               _id: "$course", // Group documents by course name
+               count: { $sum: 1 }, // Count the number of documents in each group
+            }
          },
+         {
+            $project: {
+               courseName: "$_id", // Project the course name field
+               count: "$count", // Project the count field
+               _id: 0, // Exclude the default "_id" field from the response
+            }
+         }
       ]);
-      const courses = studentCountsByCourses.map((course) => ({
-         courseName: course._id, // Extract course name from _id
-         count: course.count,
-      }));
 
 
       // Aggregate and find the count of student for each field

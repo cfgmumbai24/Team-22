@@ -6,7 +6,8 @@ const getMentorDetails = async (req, res) => {
       const mentors = await Mentor.aggregate([
          {
             $project: {
-               name: 1,
+               _id: 0, // Explicitly exclude the default _id field
+               name: { $concat: ["$first_name", " ", "$last_name"] }, // Concatenate first and last name
                badges: 1,
                badgeValue: {
                   $sum: [

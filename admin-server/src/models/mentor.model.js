@@ -73,6 +73,10 @@ const mentorSchema = mongoose.Schema(
       age: {
          type: Number,
          default: 18
+      },
+      field: {
+         type: String,
+         default: 'English'
       }
    },
    {
