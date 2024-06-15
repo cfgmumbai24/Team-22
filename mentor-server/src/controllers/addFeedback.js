@@ -3,9 +3,9 @@ import Feedback from "../models/feedback.model";
 const addFeedback = async (req, res) => {
    try {
       // Get the feedback data from the request body
-      const feedbackBody = req.body;
+      const { studentName, mentorName, date, studentReview } = req.body;
       // Save the feedback data to the database
-      const newFeedback = new Feedback(feedbackBody);
+      const newFeedback = new Feedback({ mentorName, studentName, studentReview, date });
       await newFeedback.save();
       return res.status(201).json({ message: "Feedback added successfully" });
    } catch (error) {
