@@ -1,52 +1,38 @@
-const http = require("http");
-const express = require("express");
+const express = require('express');
+const http = require('http');
+const { Server } = require('socket.io');
+const { v4: uuidv4 } = require('uuid');
 
 const app = express();
 const server = http.createServer(app);
-const io = require("socket.io")(server, {
-  cors: {
-    origin: "http://localhost:3000",
-    methods: ["GET", "POST"],
-    allowedHeaders: ["my-custom-header"],
-    credentials: true,
-  },
+const io = new Server(server);
+
+app.use(express.static('public'));
+
+app.get('/room', (req, res) => {
+  const roomId = uuidv4();
+  res.json({ roomId });
 });
-const { addUser, removeUser } = require("./user");
 
-const PORT = 5000;
+io.on('connection', (socket) => {
+  console.log('a user connected');
 
-io.on("connection", (socket) => {
-  socket.on("join", ({ name, room }, callBack) => {
-    const { user, error } = addUser({ id: socket.id, name, room });
-    if (error) return callBack(error);
-
-    socket.join(user.room);
-    socket.emit("message", {
-      user: "Admin",
-      text: `Welocome to ${user.room}`,
-    });
-
-    socket.broadcast
-      .to(user.room)
-      .emit("message", { user: "Admin", text: `${user.name} has joined!` });
-    callBack(null);
-
-    socket.on("sendMessage", ({ message }) => {
-      io.to(user.room).emit("message", {
-        user: user.name,
-        text: message,
-      });
-    });
+  socket.on('joinRoom', (roomId) => {
+    socket.join(roomId);
+    console.log(`User joined room: ${roomId}`);
   });
-  socket.on("disconnect", () => {
-    const user = removeUser(socket.id);
-    console.log(user);
-    io.to(user.room).emit("message", {
-      user: "Admin",
-      text: `${user.name} just left the room`,
-    });
-    console.log("A disconnection has been made");
+
+  socket.on('message', (data) => {
+    io.to(data.roomId).emit('message', data.message);
+  });
+  
+
+  socket.on('disconnect', () => {
+    console.log('user disconnected');
   });
 });
 
-server.listen(PORT, () => console.log(`Server is Quannected to Port ${PORT}`));
+const PORT = process.env.PORT || 3000;
+server.listen(PORT, () => {
+  console.log(`Server is running on port ${PORT}`);
+});
