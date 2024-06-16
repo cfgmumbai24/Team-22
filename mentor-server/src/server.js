@@ -2,7 +2,8 @@ import express from 'express';
 import mongoose from 'mongoose';
 import cors from 'cors';
 import config from './config/config.js';
-import router from './routes/home.route.js';
+import dashboardRouter from './routes/dashboard.route.js';
+import profileRouter from './routes/profile.route.js';
 
 
 // Config details
@@ -21,7 +22,8 @@ server.use(express.urlencoded({ extended: false }));
 
 
 // Routes
-server.use('/', router);
+server.use('/dashboard', dashboardRouter);
+server.use('/profile', profileRouter);
 
 
 // Database connection
