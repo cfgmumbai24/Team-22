@@ -29,6 +29,9 @@ export default function DashboardCards() {
     setMentorDetails(res2.districts)
     setFieldsMentor(res2.fields)
     console.log('fieldsmentor', res2.fields)
+    const response3 = await fetch('http://127.0.0.1:3000/admin/deepdive')
+    const res3 = await response3.json()
+    console.log('Response1', res3)
   }
   useEffect(() => {
     // Fetch details from /home endpoint
@@ -158,33 +161,7 @@ export default function DashboardCards() {
             </CardContent>
           </Card>
         </Box>
-      </Grid>
-      <div style = {{alignItems: 'center',justifyContent: 'center', margin: 20}}>
-      <Typography variant="h5" component="div" sx={{ mb: 0, fontWeight: 'bold', justifyContent: 'center', alignItems: 'center'  }}>
-          Deep Dive
-      </Typography>
-      </div>
-      <Grid item xs={12} sx={{ display: 'flex', justifyContent: 'center', marginBottom: 2 }}>
-        <Box sx={{ display: 'flex', gap: 2 }}>
-          <Card sx={{ height: '450px', width: '600px', p:2, backgroundColor: '#FEFAF6',border: '1px solid #ccc'}}>
-            <CardContent sx={{ p: 3 }}>
-              <Typography variant="h6" component="div" sx={{ mb: 0, fontWeight: 'bold'  }}>
-                Students by District
-              </Typography>
-              {/* <BarChart /> */}
-              <DistrictCounts data = {details} functionmap = {functionmap}/>
-            </CardContent>
-          </Card>
-          <Card sx={{ height: '350px', width: '400px', p:0, backgroundColor: '#FEFAF6',border: '1px solid #ccc', marginTop: 5}}>
-            {/* <Typography variant="h6" component="div" sx={{ mb: 0, fontWeight: 'bold'  }}>
-                Mentors by District
-              </Typography> */}
-            <CardContent sx={{ p: 0 ,display: 'flex', justifyContent: 'center', marginLeft: 4}}>
-              <PolarAreaChartAdmin />
-            </CardContent>
-          </Card>
-        </Box>
-      </Grid>
+      </Grid>  
     </Grid>
   );
 }
