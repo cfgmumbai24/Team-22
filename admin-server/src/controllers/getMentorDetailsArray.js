@@ -1,4 +1,4 @@
-import Mentor from "../models/student.model.js";
+import Mentor from "../models/mentor.model.js";
 
 const getMentorDetailsArray = async (req, res) => {
    try {
