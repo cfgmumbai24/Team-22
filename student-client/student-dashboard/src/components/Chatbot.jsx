@@ -9,7 +9,7 @@ const Chatbot = () => {
 <div className='fixed top-0 left-0 w-full z-50'>
     <Navbar />
     </div>
-    <div style={{ display: 'flex', justifyContent: 'center', height: '78vh' }}>
+    <div style={{ display: 'flex', justifyContent: 'center', height: '78vh', marginTop: '15vh' }}>
       <style>
         {`
           .center-div {
