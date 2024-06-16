@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css"; 
 import "slick-carousel/slick/slick-theme.css";
@@ -6,6 +6,24 @@ import styles from './App.module.css'; // Import CSS module
 import { Card, CardContent, Typography, Grid, Box } from '@mui/material';
 import FeedbackCar from './FeedbackCar';
 function App() {
+  const [data,setData] = useState([])
+  const dosomething = async()=>{
+    const response1 = await fetch('http://127.0.0.1:3000/admin/mentors')
+    console.log(response1)
+    const res = await response1.json()
+    console.log('Mentors', res)
+    setData(res.mentors)
+    console.log('hey1')
+  }
+  useEffect(() => {
+    // Fetch details from /home endpoint
+    dosomething()
+    // Fetch mentor details from /mentors endpoint
+    // const response2 = await fetch('/admin/mentors')
+    //   .then(response => response.json())
+    //   .then(data => setMentorDetails(data))
+    //   .catch(error => console.error('Error fetching mentor details:', error));
+  }, []);
   const settings = {
     dots: true,
     infinite: true,
@@ -13,7 +31,8 @@ function App() {
     slidesToShow: 3,
     slidesToScroll: 1
   };
-
+  
+  
   return (
     <div className={`w-3/4 m-auto ${styles.appContainer}`}>
     <Typography variant="h2" sx={{ color: '#57321A' ,fontWeight: 'bold',  }}>
@@ -28,7 +47,10 @@ function App() {
               </div>
               <div className={`${styles.contentContainer}`}>
                 <p className={`${styles.name}`}>{d.name}</p>
-                <p className={`${styles.review}`}>{d.review}</p>
+                <p className={`${styles.review}`}>Guru Dakishna : {d.badgeValue}</p>
+                <p className={`${styles.review}`}>Gold Badges : {d.badges.gold}</p>
+                <p className={`${styles.review}`}>Gold Badges : {d.badges.silver}</p>
+                <p className={`${styles.review}`}>Gold Badges : {d.badges.bronze}</p>
                 <button className={`${styles.button}`}>Read More</button>
               </div>
             </div>
@@ -40,33 +62,7 @@ function App() {
   );
 }
 
-const data = [
-  {
-    name: `John Morgan`,
-    img: `/students/John_Morgan.jpg`,
-    review: `Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.`
-  },
-  {
-    name: `Ellie Anderson`,
-    img: `/students/Ellie_Anderson.jpg`,
-    review: `Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.`
-  },
-  {
-    name: `Nia Adebayo`,
-    img: `/students/Nia_Adebayo.jpg`,
-    review: `Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.`
-  },
-  {
-    name: `Rigo Louie`,
-    img: `/students/Rigo_Louie.jpg`,
-    review: `Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.`
-  },
-  {
-    name: `Mia Williams`,
-    img: `/students/Mia_Williams.jpg`,
-    review: `Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.`
-  },
-];
+
 
 export default App;
 

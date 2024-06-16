@@ -4,31 +4,31 @@ const mentorSchema = mongoose.Schema(
    {
       first_name: {
          type: String,
-         required: [true, 'Name 404']
+         default: 'fName'
       },
       last_name: {
          type: String,
-         required: [true, 'Name 404']
+         default: 'lName'
       },
       email: {
          type: String,
-         required: [true, 'Email 404']
+         default: 'dummy@email.com'
       },
       address: {
          type: String,
-         required: [true, 'Address 404']
+         default: 'home, mentor - 111222.'
       },
       phone: {
          type: Number,
-         required: [true, 'Phone 404']
+         default: 1234567890
       },
       languages: {
          type: [String],
-         required: [true, 'Language 404']
+         default: ['English']
       },
       bio: {
          type: String,
-         required: [true, 'Bio 404']
+         default: ""
       },
       students: {
          type: [{
@@ -56,8 +56,28 @@ const mentorSchema = mongoose.Schema(
       },
       district: {
          type: String,
-         required: [true, 'District 404']
+         default: "unknown"
       },
+      aadharcard: {
+         type: String,
+         default: 'dummy'
+      },
+      password: {
+         type: String,
+         default: "password"
+      },
+      state: {
+         type: String,
+         default: "unknown"
+      },
+      age: {
+         type: Number,
+         default: 18
+      },
+      field: {
+         type: String,
+         default: 'English'
+      }
    },
    {
       timestamps: true,

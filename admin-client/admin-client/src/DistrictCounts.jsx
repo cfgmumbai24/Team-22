@@ -1,16 +1,9 @@
 import React from 'react';
 import { Box, Typography } from '@mui/material';
 
-// Sample data
-const data = [
-  { district: 'District A', count: 10 },
-  { district: 'District B', count: 20 },
-  { district: 'District C', count: 30 },
-  { district: 'District D', count: 40 },
-  { district: 'District E', count: 50 }
-];
 
-const DistrictCounts = ({mapfunction}) => {
+
+const DistrictCounts = ({mapfunction,data,label}) => {
   return (
     <Box
       sx={{
@@ -40,9 +33,9 @@ const DistrictCounts = ({mapfunction}) => {
               borderBottom: 'none' // Remove border for the last item
             }
           }}
-          onClick = {() => mapfunction(entry.district)}
+          onClick = {() => mapfunction(entry._id)}
         >
-          <Typography variant="body1">{entry.district}</Typography>
+          <Typography variant="body1">{entry._id}</Typography>
           <Typography variant="body1">{entry.count}</Typography>
         </Box>
       ))}

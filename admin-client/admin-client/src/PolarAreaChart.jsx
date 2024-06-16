@@ -23,23 +23,7 @@ ChartJS.register(
   PolarAreaController
 );
 
-const data = {
-  labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple'],
-  datasets: [
-    {
-      label: '# of Votes',
-      data: [12, 19, 3, 5, 2],
-      backgroundColor: [
-        'rgba(255, 99, 132, 0.6)',
-        'rgba(54, 162, 235, 0.6)',
-        'rgba(255, 206, 86, 0.6)',
-        'rgba(75, 192, 192, 0.6)',
-        'rgba(153, 102, 255, 0.6)',
-      ],
-      borderWidth: 1,
-    },
-  ],
-};
+
 
 const options = {
   plugins: {
@@ -59,11 +43,27 @@ const options = {
   },
 };
 
-const PieChart = () => (
-  <div className="chart-container"> {/* Wrap with container */}
+const PieChart = ({data2,labels1}) => {
+  const data = {
+    labels: labels1,
+    datasets: [
+      {
+        label: 'Number',
+        data: data2,
+        backgroundColor: [
+          'rgba(255, 99, 132, 0.6)',
+          'rgba(54, 162, 235, 0.6)',
+          'rgba(255, 206, 86, 0.6)',
+          'rgba(75, 192, 192, 0.6)',
+          'rgba(153, 102, 255, 0.6)',
+        ],
+        borderWidth: 1,
+      },
+    ],
+  };
+  return (<div className="chart-container"> {/* Wrap with container */}
     <Pie data={data} options={options} />
-  </div>
-);
+  </div>)};
 
 export default PieChart;
 

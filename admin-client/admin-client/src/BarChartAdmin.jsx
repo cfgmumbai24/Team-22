@@ -21,22 +21,7 @@ ChartJS.register(
   Legend
 );
 
-const data = {
-  labels: ['District A', 'District B', 'District C', 'District D', 'District E'],
-  datasets: [
-    {
-      label: 'Mentors',
-      data: [5, 8, 3, 6, 10],
-      backgroundColor: [
-        'rgba(255, 99, 132, 0.6)',
-        'rgba(54, 162, 235, 0.6)',
-        'rgba(255, 206, 86, 0.6)',
-        'rgba(75, 192, 192, 0.6)',
-        'rgba(153, 102, 255, 0.6)',
-      ],
-    },
-  ],
-};
+
 
 const options = {
   indexAxis: 'y', // Set the index axis to y for a horizontal bar chart
@@ -57,7 +42,23 @@ const options = {
   },
 };
 
-export default function BarChart() {
+export default function BarChart({data2,labels1}) {
+    const data = {
+        labels: labels1,
+        datasets: [
+          {
+            label: 'Mentors',
+            data: data2,
+            backgroundColor: [
+              'rgba(255, 99, 132, 0.6)',
+              'rgba(54, 162, 235, 0.6)',
+              'rgba(255, 206, 86, 0.6)',
+              'rgba(75, 192, 192, 0.6)',
+              'rgba(153, 102, 255, 0.6)',
+            ],
+          },
+        ],
+      };
   return <Bar data={data} options={options} />;
 }
 
